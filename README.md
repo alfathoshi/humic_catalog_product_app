@@ -1,16 +1,6 @@
 # humic
 
-A new Flutter project.
+![image](https://github.com/user-attachments/assets/863a1117-df9e-4bf9-9456-fc3ababaeb48)
 
-## Getting Started
+![image](https://github.com/user-attachments/assets/b2df56ca-bd8e-4e68-93d6-675f6edcd490)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
