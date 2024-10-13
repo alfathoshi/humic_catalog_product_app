@@ -7,6 +7,7 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.8
+  device_preview: ^1.2.0
   fluentui_system_icons: ^1.1.259
   flutter:
     sdk: flutter

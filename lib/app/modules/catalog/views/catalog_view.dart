@@ -31,47 +31,82 @@ class CatalogView extends GetView<CatalogController> {
   ];
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: whiteColor,
-        appBar: appbar,
-        body: Column(
-          children: [
-            sizedBox24,
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Below are some of the research focuses that become the main topics of discussion in HUMIC Research Center',
-                style: h5SemiBold,
-                textAlign: TextAlign.center,
+        appBar: AppBar(
+          toolbarHeight: 90,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/bg_searchbox.png'),
+                fit: BoxFit.cover,
               ),
             ),
-            sizedBox24,
-            SizedBox(
-              height: 580,
-              width: double.infinity,
-              child: PageView.builder(
-                controller: PageController(
-                    viewportFraction: 0.85), // Adjust this value as needed
-                itemCount: 4, // Assuming you have 4 items
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10), // Adjust padding as needed
-                    child: ProductCatalogCard(
-                      product: produk[index],
-                      description: desc[index],
-                      onTap: () async {
-                        final url = Uri.parse(link[index]);
-                        if (await canLaunchUrl(url)) {
-                          await launchUrl(url);
-                        }
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Cari produk digital...',
+                    hintStyle: h5RegularHint,
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      color: Colors.grey,
+                    ),
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          automaticallyImplyLeading: false,
+        ),
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Image.asset(
+                'assets/images/bg_catalog.png',
+                scale: 4,
+              ),
+              Column(
+                children: [
+                  sizedBox24,
+                  sizedBox24,
+                  SizedBox(
+                    height: 620,
+                    width: double.infinity,
+                    child: PageView.builder(
+                      controller: PageController(viewportFraction: 0.85),
+                      itemCount: 4,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: ProductCatalogCard(
+                            product: produk[index],
+                            description: desc[index],
+                            onTap: () async {
+                              final url = Uri.parse(link[index]);
+                              if (await canLaunchUrl(url)) {
+                                await launchUrl(url);
+                              }
+                            },
+                          ),
+                        );
                       },
                     ),
-                  );
-                },
+                  )
+                ],
               ),
-            )
-          ],
-        ));
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

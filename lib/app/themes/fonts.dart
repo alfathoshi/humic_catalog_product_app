@@ -26,7 +26,13 @@ TextStyle h4Regular = GoogleFonts.josefinSans(
 TextStyle h5Regular = GoogleFonts.josefinSans(
   fontWeight: FontWeight.w400,
   color: font,
-  fontSize: 12,
+  fontSize: 14,
+);
+
+TextStyle h5RegularHint = GoogleFonts.josefinSans(
+  fontWeight: FontWeight.w400,
+  color: greyColor,
+  fontSize: 14,
 );
 
 TextStyle h6Regular = GoogleFonts.josefinSans(
@@ -61,6 +67,12 @@ TextStyle h1Bold = GoogleFonts.josefinSans(
 TextStyle h2Bold = GoogleFonts.josefinSans(
   fontWeight: FontWeight.w700,
   color: font,
+  fontSize: 24,
+);
+
+TextStyle h2BoldWhite = GoogleFonts.josefinSans(
+  fontWeight: FontWeight.w700,
+  color: whiteColor ,
   fontSize: 24,
 );
 
@@ -126,6 +138,12 @@ TextStyle h3Medium = GoogleFonts.josefinSans(
 TextStyle h4Medium = GoogleFonts.josefinSans(
   fontWeight: FontWeight.w600,
   color: font,
+  fontSize: 16,
+);
+
+TextStyle h4MediumWhite = GoogleFonts.josefinSans(
+  fontWeight: FontWeight.w600,
+  color: whiteColor ,
   fontSize: 16,
 );
 
