@@ -5,6 +5,7 @@ import 'package:humic/app/themes/colors.dart';
 import 'package:humic/app/themes/fonts.dart';
 import 'package:humic/app/themes/separator.dart';
 import 'package:humic/app/widgets/appbar.dart';
+import 'package:humic/app/widgets/dashboard.dart';
 import 'package:humic/app/widgets/focused_card.dart';
 
 import '../controllers/home_controller.dart';
@@ -28,6 +29,8 @@ class HomeView extends GetView<HomeController> {
     'Engineering using devices and sensors to support human daily activities'
   ];
 
+  HomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,48 +38,7 @@ class HomeView extends GetView<HomeController> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Stack(
-                children: [
-                  Column(
-                    children: [
-                      Image.asset(
-                        'assets/images/bg_up.png',
-                      ),
-                      Image.asset(
-                        'assets/images/bg_down.png',
-                      ),
-                    ],
-                  ),
-                  Positioned(
-                    top: 20,
-                    left: 120,
-                    right: 0,
-                    child: Image.asset(
-                      'assets/images/header.png',
-                      scale: 6,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 230,
-                    left: 80,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'RC HUMIC',
-                          style: h2Bold,
-                        ),
-                        sizedBox24,
-                        Text(
-                          'HUMIC research center focuses on \ntechnology engineering that related \nwith human daily activities support. We \nare interested in develop of wearable \ndevices and sensors that are integrated \nwith humans body. On the science field, \nwe are also interested with collecting \nthe data and information about human \nbody activities. From the data and \ninformation we could use Big Data \nconcept to create knowledge and \naccurate information.',
-                          textAlign: TextAlign.left,
-                          style: h6Regular,
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+              Dashboard(),
               Container(
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
@@ -101,14 +63,12 @@ class HomeView extends GetView<HomeController> {
                         height: 600,
                         width: double.infinity,
                         child: PageView.builder(
-                          controller: PageController(
-                              viewportFraction:
-                                  0.85), 
-                          itemCount: 3, 
+                          controller: PageController(),
+                          itemCount: 3,
                           itemBuilder: (context, index) {
                             return Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 8), 
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
                               child: FocusedCard(
                                 image: image[index],
                                 focused: focused[index],

@@ -1,6 +1,8 @@
+import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:humic/app/routes/app_pages.dart';
 import 'package:humic/app/themes/colors.dart';
 import 'package:humic/app/themes/fonts.dart';
 import 'package:humic/app/themes/separator.dart';
@@ -90,11 +92,8 @@ class CatalogView extends GetView<CatalogController> {
                           child: ProductCatalogCard(
                             product: produk[index],
                             description: desc[index],
-                            onTap: () async {
-                              final url = Uri.parse(link[index]);
-                              if (await canLaunchUrl(url)) {
-                                await launchUrl(url);
-                              }
+                            onTap: () {
+                              Get.toNamed(Routes.CATALOG_DETAIL);
                             },
                           ),
                         );

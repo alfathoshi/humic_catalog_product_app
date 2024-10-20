@@ -12,12 +12,15 @@ import '../controllers/splash_screen_controller.dart';
 class SplashScreenView extends GetView<SplashScreenController> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 4)).then((value) {
+    Future.delayed(const Duration(seconds: 3)).then((value) {
       Get.toNamed(Routes.NAVIGATION_BAR);
     });
 
     return const Scaffold(
-      body: RiveAnimation.asset('assets/rive/splashscreen_humic.riv', fit: BoxFit.cover,),
+      body: RiveAnimation.asset(
+        'assets/rive/splashscreen_humic.riv',
+        fit: BoxFit.cover,
+      ),
     );
     // Scaffold(
     //   backgroundColor: const Color(0xFFC5181F),

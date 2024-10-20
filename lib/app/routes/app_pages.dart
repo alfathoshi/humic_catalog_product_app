@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import 'package:humic/app/modules/catalog/bindings/catalog_binding.dart';
 import 'package:humic/app/modules/catalog/views/catalog_view.dart';
+import 'package:humic/app/modules/catalog_detail/bindings/catalog_detail_binding.dart';
+import 'package:humic/app/modules/catalog_detail/views/catalog_detail_view.dart';
 import 'package:humic/app/modules/home/bindings/home_binding.dart';
 import 'package:humic/app/modules/home/views/home_view.dart';
 import 'package:humic/app/modules/navigation_bar/bindings/navigation_bar_binding.dart';
@@ -36,6 +38,11 @@ class AppPages {
       name: _Paths.CATALOG,
       page: () => CatalogView(),
       binding: CatalogBinding(),
+    ),
+    GetPage(
+      name: _Paths.CATALOG_DETAIL,
+      page: () =>  CatalogDetailView(),
+      binding: CatalogDetailBinding(),
     ),
   ];
 }
