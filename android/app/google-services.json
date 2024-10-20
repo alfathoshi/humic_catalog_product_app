@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "882098004569",
+    "project_id": "hkiproductcataloghumic-944d5",
+    "storage_bucket": "hkiproductcataloghumic-944d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882098004569:android:26fc08f49d2fa25082c748",
+        "android_client_info": {
+          "package_name": "com.productcatalog.humic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOCNu3R3nFIN6IXat-PzAWCDhHEgQf6W0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -10,3 +10,4 @@ class CatalogBinding extends Bindings {
     );
   }
 }
+
