@@ -1,12 +1,12 @@
 # humic
 
-ver 1.0
+<h1>ver 1.0</h1>
 
 <img src="https://github.com/user-attachments/assets/863a1117-df9e-4bf9-9456-fc3ababaeb48" width=40% height=40%/>
 
 <img src="https://github.com/user-attachments/assets/1757de4a-55c9-47aa-aa28-24ae155d4fee" width=40% height=40%/>
 
-ver 2.0
+<h1>ver 2.0</h1>
 
 <img src="https://github.com/user-attachments/assets/d5c27375-4952-4d8a-8d91-172b38dcdccc" width=40% height=40%/>
 
