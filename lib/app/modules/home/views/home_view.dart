@@ -25,8 +25,8 @@ class HomeView extends GetView<HomeController> {
 
   final List<String> desc = [
     'Engineering using devices and sensors to support human daily activities',
-    'Engineering using devices and sensors to support human daily activities',
-    'Engineering using devices and sensors to support human daily activities'
+    'Internet of Things become an inevitable trending technology',
+    'Using Big Data concept to gain knowledge and useful information'
   ];
 
   HomeView({super.key});
@@ -35,6 +35,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: whiteColor,
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -51,7 +52,7 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(24.0),
+                  padding: const EdgeInsets.fromLTRB(0, 24, 0, 0),
                   child: Column(
                     children: [
                       Text(
@@ -60,15 +61,15 @@ class HomeView extends GetView<HomeController> {
                       ),
                       sizedBox24,
                       SizedBox(
-                        height: 600,
+                        height: 500,
                         width: double.infinity,
                         child: PageView.builder(
-                          controller: PageController(),
+                          controller: PageController(viewportFraction: 0.7),
                           itemCount: 3,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: FocusedCard(
                                 image: image[index],
                                 focused: focused[index],

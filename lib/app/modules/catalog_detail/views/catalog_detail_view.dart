@@ -6,6 +6,7 @@ import 'package:humic/app/widgets/appbar.dart';
 import '../controllers/catalog_detail_controller.dart';
 
 class CatalogDetailView extends GetView<CatalogDetailController> {
+  final pdfUrl = Get.arguments as String;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,15 +14,15 @@ class CatalogDetailView extends GetView<CatalogDetailController> {
         backgroundColor: whiteColor,
       ),
       body: FutureBuilder<PDFDocument>(
-        future: controller.loadPdf(), 
+        future: controller.loadPdf(pdfUrl),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator()); 
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}')); 
+            return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
             PDFDocument doc = snapshot.data!;
-            return PDFViewer(document: doc); // Tampilin PDF
+            return PDFViewer(document: doc);
           } else {
             return const Center(child: Text('No PDF found.'));
           }

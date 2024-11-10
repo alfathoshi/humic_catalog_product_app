@@ -13,26 +13,9 @@ import 'package:url_launcher/url_launcher.dart';
 import '../controllers/catalog_controller.dart';
 
 class CatalogView extends GetView<CatalogController> {
-  final List<String> produk = [
-    'assets/images/stethoscope.png',
-    'assets/images/sihedaf.png',
-    'assets/images/anthropometry.png',
-    'assets/images/amons.png',
-  ];
-  final List<String> desc = [
-    'A digital stethoscope is an innovative tool used to visually observe heart sounds without the need to rely on the sense of hearing. It focuses on utilizing sound signals specifically to detect heart valve disease.',
-    'SiHEDAF functions as an Atrial Fibrillation (AF) detector based on Photoplethysmograph (PPG) signal. AF occurrence statistics can be used as an indication of stroke risk in patients.',
-    'Anthropometry Kit is a series of tools that function to detect stunting in children through measuring body weight, length and height as well as upper arm and head circumference.',
-    'AMons is a portable ECG device equipped with AI-based detection algorithms for near real-time detection and alerting of various arrhythmias, offering a solution for monitoring and timely intervention in heart conditions that may otherwise go undetected.'
-  ];
-  final List<String> link = [
-    'https://dev-katakatalog.pantheonsite.io/#dearflip-df_346/1/',
-    'https://dev-katakatalog.pantheonsite.io/#dearflip-df_329/1/',
-    'https://dev-katakatalog.pantheonsite.io/#dearflip-df_364/1/',
-    'https://dev-katakatalog.pantheonsite.io/#dearflip-df_303/1/'
-  ];
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(() => CatalogController());
     return SafeArea(
       child: Scaffold(
         backgroundColor: whiteColor,
@@ -79,27 +62,36 @@ class CatalogView extends GetView<CatalogController> {
               Column(
                 children: [
                   sizedBox24,
+                  Text('Research Product', style: h3Bold,),
                   sizedBox24,
-                  SizedBox(
-                    height: 620,
-                    width: double.infinity,
-                    child: PageView.builder(
-                      controller: PageController(viewportFraction: 0.85),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: ProductCatalogCard(
-                            product: produk[index],
-                            description: desc[index],
-                            onTap: () {
-                              Get.toNamed(Routes.CATALOG_DETAIL);
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  )
+                  Obx(() {
+                    if (controller.filteredCatalog.isEmpty) {
+                      return const Center(
+                          child: Text("No matching products found"));
+                    }
+                    return SizedBox(
+                      height: 620,
+                      child: PageView.builder(
+                        controller: PageController(viewportFraction: 0.85),
+                        itemCount: controller.filteredCatalog.length,
+                        itemBuilder: (context, index) {
+                          final product = controller.filteredCatalog[index];
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: ProductCatalogCard(
+                              product: product['name'],
+                              description: product['description'],
+                              onTap: () {
+                                Get.toNamed(Routes.CATALOG_DETAIL,
+                                    arguments: product['pdf']);
+                              },
+                              image: product['image'],
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  }),
                 ],
               ),
             ],

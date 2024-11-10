@@ -8,11 +8,13 @@ class ProductCatalogCard extends StatelessWidget {
   final String product;
   final String description;
   final VoidCallback onTap;
+  final String image;
   const ProductCatalogCard({
     super.key,
     required this.product,
     required this.description,
     required this.onTap,
+    required this.image,
   });
 
   @override
@@ -33,9 +35,14 @@ class ProductCatalogCard extends StatelessWidget {
                   'assets/images/bg_product.png',
                   fit: BoxFit.cover,
                 ),
-                Image.asset(
-                  product,
-                  scale: 4,
+                ClipOval(
+                  child: Image.network(
+                    image,
+                    width: 250,
+                    height: 250,
+                    scale: 4,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ],
             ),

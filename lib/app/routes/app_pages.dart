@@ -36,7 +36,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.CATALOG,
-      page: () => CatalogView(),
+      page: () =>  CatalogView(),
       binding: CatalogBinding(),
     ),
     GetPage(
