@@ -72,7 +72,7 @@ TextStyle h2Bold = GoogleFonts.josefinSans(
 
 TextStyle h2BoldWhite = GoogleFonts.josefinSans(
   fontWeight: FontWeight.w700,
-  color: whiteColor ,
+  color: whiteColor,
   fontSize: 24,
 );
 
@@ -143,7 +143,7 @@ TextStyle h4Medium = GoogleFonts.josefinSans(
 
 TextStyle h4MediumWhite = GoogleFonts.josefinSans(
   fontWeight: FontWeight.w600,
-  color: whiteColor ,
+  color: whiteColor,
   fontSize: 16,
 );
 
@@ -198,7 +198,7 @@ TextStyle h5SemiBold = GoogleFonts.josefinSans(
 TextStyle h6SemiBold = GoogleFonts.josefinSans(
   fontWeight: FontWeight.w600,
   color: font,
-  fontSize: 13,
+  fontSize: 12,
 );
 
 TextStyle h7SemiBold = GoogleFonts.josefinSans(

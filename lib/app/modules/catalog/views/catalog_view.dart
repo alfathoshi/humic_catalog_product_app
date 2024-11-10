@@ -83,7 +83,7 @@ class CatalogView extends GetView<CatalogController> {
                               description: product['description'],
                               onTap: () {
                                 Get.toNamed(Routes.CATALOG_DETAIL,
-                                    arguments: product['pdf']);
+                                    arguments: product);
                               },
                               image: product['image'],
                             ),
