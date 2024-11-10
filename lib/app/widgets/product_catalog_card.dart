@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:humic/app/themes/colors.dart';
 import 'package:humic/app/themes/fonts.dart';
 import 'package:humic/app/themes/separator.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ProductCatalogCard extends StatelessWidget {
   final String product;

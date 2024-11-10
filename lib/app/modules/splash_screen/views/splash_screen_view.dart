@@ -1,12 +1,7 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
-import 'package:humic/app/modules/navigation_bar/views/navigation_bar_view.dart';
 import 'package:humic/app/routes/app_pages.dart';
 import 'package:rive/rive.dart';
-import 'package:rive_splash_screen/rive_splash_screen.dart';
-
 import '../controllers/splash_screen_controller.dart';
 
 class SplashScreenView extends GetView<SplashScreenController> {

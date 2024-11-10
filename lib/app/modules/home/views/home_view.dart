@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:humic/app/themes/colors.dart';
 import 'package:humic/app/themes/fonts.dart';
 import 'package:humic/app/themes/separator.dart';
-import 'package:humic/app/widgets/appbar.dart';
 import 'package:humic/app/widgets/dashboard.dart';
 import 'package:humic/app/widgets/focused_card.dart';
 

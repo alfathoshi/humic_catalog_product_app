@@ -1,14 +1,10 @@
-import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:humic/app/routes/app_pages.dart';
 import 'package:humic/app/themes/colors.dart';
 import 'package:humic/app/themes/fonts.dart';
 import 'package:humic/app/themes/separator.dart';
-import 'package:humic/app/widgets/appbar.dart';
 import 'package:humic/app/widgets/product_catalog_card.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../controllers/catalog_controller.dart';
 

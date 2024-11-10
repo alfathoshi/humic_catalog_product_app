@@ -1,12 +1,9 @@
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:humic/app/modules/catalog/views/catalog_view.dart';
 import 'package:humic/app/modules/home/views/home_view.dart';
-import 'package:humic/app/modules/splash_screen/views/splash_screen_view.dart';
 import 'package:humic/app/themes/colors.dart';
-import 'package:iconsax/iconsax.dart';
 
 import '../controllers/navigation_bar_controller.dart';
 

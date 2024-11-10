@@ -1,38 +1,84 @@
-import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:humic/app/themes/colors.dart';
 import 'package:humic/app/themes/fonts.dart';
-import 'package:humic/app/widgets/appbar.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import '../controllers/catalog_detail_controller.dart';
 
 class CatalogDetailView extends GetView<CatalogDetailController> {
   final pdfUrl = Get.arguments;
+  final PdfViewerController _pdfController = PdfViewerController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          pdfUrl['name'].toString(),
-          style: h5Bold,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: grey2Color,
+        appBar: AppBar(
+          foregroundColor: whiteColor,
+          title: Text(
+            pdfUrl['name'].toString(),
+            style: h5Bold.copyWith(color: whiteColor),
+          ),
+          centerTitle: true,
+          backgroundColor: Color(0xffAE1717),
         ),
-        centerTitle: true,
-        backgroundColor: whiteColor,
-      ),
-      body: FutureBuilder<PDFDocument>(
-        future: controller.loadPdf(pdfUrl['pdf'].toString()),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          } else if (snapshot.hasData) {
-            PDFDocument doc = snapshot.data!;
-            return PDFViewer(document: doc);
-          } else {
-            return const Center(child: Text('No PDF found.'));
-          }
-        },
+        body: Column(
+          children: [
+            Expanded(
+              child: SfPdfViewer.network(
+                pdfUrl['pdf'].toString(),
+                controller: _pdfController,
+                scrollDirection: PdfScrollDirection.horizontal,
+                pageLayoutMode: PdfPageLayoutMode.single,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(8.0),
+              color: Color(0xffAE1717),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.first_page,
+                      color: whiteColor,
+                    ),
+                    onPressed: () {
+                      _pdfController.jumpToPage(1);
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: whiteColor,
+                    ),
+                    onPressed: () {
+                      _pdfController.previousPage();
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: whiteColor,
+                    ),
+                    onPressed: () {
+                      _pdfController.nextPage();
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.last_page,
+                      color: whiteColor,
+                    ),
+                    onPressed: () {
+                      _pdfController.jumpToPage(_pdfController.pageCount);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
