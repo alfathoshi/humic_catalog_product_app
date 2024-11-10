@@ -28,6 +28,11 @@ class ProductCatalogCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            Text(
+              product,
+              style: h3Bold,
+            ),
+            sizedBox24,
             Stack(
               alignment: Alignment.center,
               children: [

@@ -32,6 +32,7 @@ class CatalogView extends GetView<CatalogController> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
                 child: TextField(
+                  onChanged: controller.searchCatalog,
                   decoration: InputDecoration(
                     hintText: 'Cari produk digital...',
                     hintStyle: h5RegularHint,
@@ -62,7 +63,6 @@ class CatalogView extends GetView<CatalogController> {
               Column(
                 children: [
                   sizedBox24,
-                  Text('Research Product', style: h3Bold,),
                   sizedBox24,
                   Obx(() {
                     if (controller.filteredCatalog.isEmpty) {
