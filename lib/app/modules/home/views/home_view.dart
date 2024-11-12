@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:humic/app/themes/colors.dart';
@@ -32,57 +33,63 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: whiteColor,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Dashboard(),
-              Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xff480909),
-                      Color(0xffAE1717),
-                    ],
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        SystemNavigator.pop();
+      },
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: whiteColor,
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                Dashboard(),
+                Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xff480909),
+                        Color(0xffAE1717),
+                      ],
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 24, 0, 0),
-                  child: Column(
-                    children: [
-                      Text(
-                        'RC HUMIC Focused',
-                        style: h2BoldWhite,
-                      ),
-                      sizedBox24,
-                      SizedBox(
-                        height: 500,
-                        width: double.infinity,
-                        child: PageView.builder(
-                          controller: PageController(viewportFraction: 0.7),
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16),
-                              child: FocusedCard(
-                                image: image[index],
-                                focused: focused[index],
-                                desc: desc[index],
-                              ),
-                            );
-                          },
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 24, 0, 0),
+                    child: Column(
+                      children: [
+                        Text(
+                          'RC HUMIC Focused',
+                          style: h2BoldWhite,
                         ),
-                      ),
-                    ],
+                        sizedBox24,
+                        SizedBox(
+                          height: 500,
+                          width: double.infinity,
+                          child: PageView.builder(
+                            controller: PageController(viewportFraction: 0.7),
+                            itemCount: 3,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: FocusedCard(
+                                  image: image[index],
+                                  focused: focused[index],
+                                  desc: desc[index],
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

@@ -14,7 +14,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Application",
+      title: "HUMIC Product Catalog App",
       initialRoute: Routes.SPLASH_SCREEN,
       getPages: AppPages.routes,
     ),
