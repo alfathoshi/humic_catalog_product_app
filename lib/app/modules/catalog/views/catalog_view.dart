@@ -15,7 +15,7 @@ class CatalogView extends GetView<CatalogController> {
     Get.lazyPut(() => CatalogController());
     return PopScope(
       canPop: false,
-      onPopInvokedWithResult:(didPop, result) {
+      onPopInvokedWithResult: (didPop, result) {
         SystemNavigator.pop();
       },
       child: SafeArea(
@@ -55,49 +55,63 @@ class CatalogView extends GetView<CatalogController> {
             ),
             automaticallyImplyLeading: false,
           ),
-          body: SingleChildScrollView(
-            child: Stack(
-              children: [
-                Image.asset(
-                  'assets/images/bg_catalog.png',
-                  scale: 4,
-                ),
-                Column(
-                  children: [
-                    sizedBox24,
-                    sizedBox24,
-                    Obx(() {
-                      if (controller.filteredCatalog.isEmpty) {
-                        return const Center(
-                            child: Text("No matching products found"));
-                      }
-                      return SizedBox(
-                        height: 620,
-                        child: PageView.builder(
-                          controller: PageController(viewportFraction: 0.85),
-                          itemCount: controller.filteredCatalog.length,
-                          itemBuilder: (context, index) {
-                            final product = controller.filteredCatalog[index];
-                            return Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 10),
-                              child: ProductCatalogCard(
-                                product: product['name'],
-                                description: product['description'],
-                                onTap: () {
-                                  Get.toNamed(Routes.CATALOG_DETAIL,
-                                      arguments: product);
-                                },
-                                image: product['image'],
-                              ),
-                            );
-                          },
-                        ),
-                      );
-                    }),
-                  ],
-                ),
-              ],
+          body: RefreshIndicator(
+            onRefresh: () {
+              return controller.fetchDataList();
+            },
+            child: SingleChildScrollView(
+              child: Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/bg_catalog.png',
+                    scale: 4,
+                  ),
+                  Column(
+                    children: [
+                      sizedBox24,
+                      sizedBox24,
+                      Obx(() {
+                        if (controller.isLoading.value) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          ); 
+                        } else if (controller.filteredCatalog.isEmpty) {
+                          return const Center(
+                            child: Text("No matching products found"),
+                          );
+                        } else {
+                          return SizedBox(
+                            height: 620,
+                            child: PageView.builder(
+                              controller: controller.pageController,
+                              itemCount: controller.filteredCatalog.length,
+                              itemBuilder: (context, index) {
+                                final product =
+                                    controller.filteredCatalog[index];
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: ProductCatalogCard(
+                                    product: product['name'],
+                                    description: product['description'],
+                                    onTap: () {
+                                      Get.toNamed(
+                                        Routes.CATALOG_DETAIL,
+                                        arguments: product,
+                                      );
+                                    },
+                                    image: product['image'],
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        }
+                      }),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
